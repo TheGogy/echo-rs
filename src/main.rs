@@ -19,8 +19,8 @@ use songbird::SerenityInit;
 
 /* Import commands */
 use crate::commands::help::*;
-use crate::commands::multiply::*;
 use crate::commands::music::*;
+use crate::commands::ping::*;
 
 /* Shards container */
 pub struct ShardManagerContainer;
@@ -53,14 +53,13 @@ async fn before(_: &Context, msg: &Message, command_name: &str) -> bool {
 
 #[group]
 #[commands(
-    help,
+    // Misc
+    help,   ping,
 
-    join,
-    leave,
-    play,
+    // Music commands
+    join,   leave,  play,   pause,  resume,
     skip,
 
-    multiply,
 )]
 struct General;
 
@@ -69,6 +68,7 @@ async fn main() {
     dotenv::dotenv().expect("Failed to load .env file.");
 
     let token = env::var("DISCORD_TOKEN").expect("Set your DISCORD_TOKEN environment variable!");
+    let prefix = env::var("PREFIX").expect("Set your PREFIX environment variable!");
 
     let http = Http::new(&token);
 
@@ -82,12 +82,12 @@ async fn main() {
         Err(why) => panic!("Could not access application info: {:?}", why),
     };
 
-
+    // Initialise error tracing
     tracing_subscriber::fmt::init();
 
     let framework = StandardFramework::new()
         .configure(|c| c.owners(owners)
-        .prefix("~"))
+        .prefix(prefix))
         .before(before)
         .group(&GENERAL_GROUP);
 

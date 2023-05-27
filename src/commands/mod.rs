@@ -1,3 +1,3 @@
 pub mod help;
-pub mod multiply;
+pub mod ping;
 pub mod music;
