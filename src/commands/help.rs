@@ -6,6 +6,8 @@ use serenity::prelude::*;
 
 use std::env;
 
+// Custom help menu, might use inbuilt one later
+
 #[command]
 pub async fn help(ctx: &Context, msg: &Message, mut args: Args) -> CommandResult {
     let prefix = env::var("PREFIX").expect("Set your PREFIX environment variable!");
@@ -25,6 +27,15 @@ pub async fn help(ctx: &Context, msg: &Message, mut args: Args) -> CommandResult
             .description(format!("Hi! I'm Echo. A simple rust discord bot made with Serenity! My prefix is `{}`.", prefix))
             .fields(
                 match menu_choice {
+
+                    "general" => {
+                        vec![
+                            ("help", "Displays this help menu", true),
+                            ("ping", "Shows info about the bot", true),
+                            ("choice", "Selects a random number from a given range", true),
+                        ]
+                    },
+
                     "music" => {
                         vec![
                             ("join", "Joins a voice channel", true),
@@ -36,10 +47,10 @@ pub async fn help(ctx: &Context, msg: &Message, mut args: Args) -> CommandResult
                         ]
                     },
 
-                    "default" | _ => {
+                    _ => {
                         vec![
                             ("help", "Displays this help menu", true),
-                            ("help music", "Show music commands", true),
+                            ("help music", "Show music commands", false),
                         ]
                     },
                 }

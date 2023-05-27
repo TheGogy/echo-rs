@@ -7,6 +7,8 @@ use serenity::prelude::*;
 use crate::ShardManagerContainer;
 
 #[command]
+#[description("Shows the bot's heartbeat latency")]
+#[bucket("general")]
 pub async fn ping(ctx: &Context, msg: &Message) -> CommandResult {
     let data = ctx.data.read().await;
 

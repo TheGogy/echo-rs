@@ -19,8 +19,9 @@ use songbird::SerenityInit;
 
 /* Import commands */
 use crate::commands::help::*;
-use crate::commands::music::*;
 use crate::commands::ping::*;
+use crate::commands::music::*;
+use crate::commands::choice::*;
 
 /* Shards container */
 pub struct ShardManagerContainer;
@@ -54,7 +55,7 @@ async fn before(_: &Context, msg: &Message, command_name: &str) -> bool {
 #[group]
 #[commands(
     // Misc
-    help,   ping,
+    help,   ping,   choice,
 
     // Music commands
     join,   leave,  play,   pause,  resume,
