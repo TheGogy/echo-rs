@@ -6,7 +6,7 @@ use serenity::prelude::*;
 
 use std::env;
 
-// Custom help menu, might use inbuilt one later
+// Custom help menu, might use inbuilt one later. For noe, this seems like the better choice
 
 #[command]
 pub async fn help(ctx: &Context, msg: &Message, mut args: Args) -> CommandResult {
@@ -24,7 +24,7 @@ pub async fn help(ctx: &Context, msg: &Message, mut args: Args) -> CommandResult
             .colour(0x89dceb)
             .thumbnail("https://images.unsplash.com/photo-1574169208507-84376144848b?ixlib=rb-4.0.3")
             .title("**- -【 Ｈｅｌｐ 】- -**")
-            .description(format!("Hi! I'm Echo. A simple rust discord bot made with Serenity! My prefix is `{}`.", prefix))
+            .description(format!("Hi! I'm Echo. A simple rust discord bot made with Serenity and Songbird! My prefix is `{}`.", prefix))
             .fields(
                 match menu_choice {
 
@@ -41,16 +41,19 @@ pub async fn help(ctx: &Context, msg: &Message, mut args: Args) -> CommandResult
                             ("join", "Joins a voice channel", true),
                             ("leave", "Leaves a music channel", true),
                             ("play", "Play / queue a song from a YouTube URL", true),
+                            ("stop", "Stops current playlist", true),
                             ("skip", "Skips the current song", true),
                             ("pause", "Pauses the current song", true),
                             ("resume", "Resumes the current song", true),
+                            ("nowplaying", "Shows info about current song", true),
                         ]
                     },
 
                     _ => {
                         vec![
-                            ("help", "Displays this help menu", true),
+                            ("help", "Displays this help menu", false),
                             ("help music", "Show music commands", false),
+                            ("help general", "Show general commands", false),
                         ]
                     },
                 }
