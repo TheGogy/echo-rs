@@ -12,6 +12,7 @@ use serenity::http::Http;
 use serenity::model::channel::Message;
 use serenity::model::event::ResumedEvent;
 use serenity::model::gateway::Ready;
+use serenity::model::prelude::Activity;
 use serenity::prelude::*;
 use tracing::{debug, error, info, instrument};
 
@@ -44,11 +45,13 @@ struct Handler;
 
 #[async_trait]
 impl EventHandler for Handler {
-    async fn ready(&self, _: Context, ready: Ready) {
+    async fn ready(&self, ctx: Context, ready: Ready) {
         info!(
             "Connected as --> {} [id: {}]",
             ready.user.name, ready.user.id
         );
+        let status = env::var("DISCORD_STATUS").expect("Set your DISCORD_STATUS environment variable!");
+        ctx.set_activity(Activity::playing(status)).await;
     }
 
     #[instrument(skip(self, _ctx))]
