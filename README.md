@@ -1,6 +1,6 @@
 # <a name="intro"></a>**Echo - a simple discord music bot**
 
-This is an entirely self contained discord bot written in [Serenity](https://serenity-rs.github.io/serenity/current/serenity/index.html) and [Songbird](https://serenity-rs.github.io/songbird/current/songbird/index.html).
+This is an entirely self contained discord bot written in Rust, using [Serenity](https://serenity-rs.github.io/serenity/current/serenity/index.html) and [Songbird](https://serenity-rs.github.io/songbird/current/songbird/index.html).
 
 ## <a name="links"></a>Links
 - [Installation](#install)
