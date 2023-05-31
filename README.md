@@ -9,6 +9,6 @@ This is an entirely self contained discord bot written in [Serenity](https://ser
 
 Once you have cloned the repository, you will need to get your bot a [token](https://discord.com/developers/applications). You can then copy this token and place it in [.envexample](/.envexample).
 
-Then, rename [.envexample][/.envexample] to `.env`.
+Then, rename [.envexample](/.envexample) to `.env`.
 
 Now your bot (should be) working! You can invite it to your server using [this tool](https://discordapi.com/permissions.html).
