@@ -7,7 +7,7 @@ This is an entirely self contained discord bot written in [Serenity](https://ser
 
 # <a name="install"></a>How to install
 
-Once you have cloned the repository, you will need to get your bot a [token](https://discord.com/developers/applications). You can then copy this token and place it in [.envexample][/.envexample].
+Once you have cloned the repository, you will need to get your bot a [token](https://discord.com/developers/applications). You can then copy this token and place it in [.envexample](/.envexample).
 
 Then, rename [.envexample][/.envexample] to `.env`.
 
