@@ -6,3 +6,4 @@ pub mod play;
 pub mod resume;
 pub mod skip;
 pub mod stop;
+pub mod queue;

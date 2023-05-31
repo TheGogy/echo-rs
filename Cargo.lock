@@ -299,7 +299,7 @@ checksum = "77c90badedccf4105eca100756a0b1289e191f6fcbdadd3cee1d2f614f97da8f"
 
 [[package]]
 name = "echo-rs"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "chrono",
  "dotenv",

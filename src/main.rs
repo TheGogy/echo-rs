@@ -30,7 +30,7 @@ use crate::commands::music::play::*;
 use crate::commands::music::resume::*;
 use crate::commands::music::skip::*;
 use crate::commands::music::stop::*;
-
+use crate::commands::music::queue::*;
 
 /* Shards container */
 pub struct ShardManagerContainer;
@@ -73,7 +73,7 @@ async fn before(_: &Context, msg: &Message, command_name: &str) -> bool {
 
     // Music commands
     join,   leave,  play,   pause,  resume,
-    skip,   stop,   nowplaying
+    skip,   stop,   queue,  nowplaying
 
 )]
 struct General;
