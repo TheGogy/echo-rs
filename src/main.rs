@@ -28,6 +28,7 @@ use crate::commands::music::nowplaying::*;
 use crate::commands::music::pause::*;
 use crate::commands::music::play::*;
 use crate::commands::music::resume::*;
+use crate::commands::music::shuffle::*;
 use crate::commands::music::skip::*;
 use crate::commands::music::stop::*;
 use crate::commands::music::queue::*;
@@ -73,7 +74,7 @@ async fn before(_: &Context, msg: &Message, command_name: &str) -> bool {
 
     // Music commands
     join,   leave,  play,   pause,  resume,
-    skip,   stop,   queue,  nowplaying
+    skip,   stop,   queue,  shuffle, nowplaying
 
 )]
 struct General;

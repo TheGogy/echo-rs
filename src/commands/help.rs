@@ -46,6 +46,8 @@ pub async fn help(ctx: &Context, msg: &Message, mut args: Args) -> CommandResult
                             ("pause", "Pauses the current song", true),
                             ("resume", "Resumes the current song", true),
                             ("nowplaying", "Shows info about current song", true),
+                            ("queue", "Show the current queue", true),
+                            ("shuffle", "Shuffles the current playlist", true),
                         ]
                     },
 
