@@ -22,5 +22,5 @@ pacman -S yt-dlp
 ```
 
 ```bash
-scoop install yt-dlp
+choco install yt-dlp
 ```
