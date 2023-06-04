@@ -12,3 +12,15 @@ Once you have cloned the repository, you will need to get your bot a [token](htt
 Then, rename [.envexample](/.envexample) to `.env`.
 
 Now your bot (should be) working! You can invite it to your server using [this tool](https://discordapi.com/permissions.html).
+
+In order to play music through this bot, you will also need to install [yt-dlp](https://github.com/yt-dlp/yt-dlp).
+
+This is also packaged in some repos:
+
+```bash
+pacman -S yt-dlp
+```
+
+```bash
+scoop install yt-dlp
+```
