@@ -41,4 +41,3 @@ async fn pause(ctx: &Context, msg: &Message) -> CommandResult {
     }
     Ok(())
 }
-

@@ -41,4 +41,3 @@ async fn resume(ctx: &Context, msg: &Message) -> CommandResult {
     }
     Ok(())
 }
-

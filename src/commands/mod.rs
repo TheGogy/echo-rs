@@ -3,3 +3,4 @@ pub mod help;
 pub mod music;
 pub mod ping;
 pub mod utils;
+pub mod virustotal;

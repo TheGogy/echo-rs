@@ -39,7 +39,6 @@ async fn play(ctx: &Context, msg: &Message, mut args: Args) -> CommandResult {
         .expect("Songbird Voice client placed in at initialisation.")
         .clone();
 
-
     if let Some(handler_lock) = manager.get(guild_id) {
         let mut handler = handler_lock.lock().await;
 
@@ -60,7 +59,7 @@ async fn play(ctx: &Context, msg: &Message, mut args: Args) -> CommandResult {
                         })
                         .await?;
                     return Ok(());
-                },
+                }
             };
 
             let song = handler.enqueue_source(source.into());
@@ -91,7 +90,6 @@ async fn play(ctx: &Context, msg: &Message, mut args: Args) -> CommandResult {
                     })
                 })
                 .await?;
-
         } else if url.contains("playlist") {
             let get_raw_list = Command::new("yt-dlp")
                 .args(&["-j", "--flat-playlist", &url])
@@ -100,12 +98,14 @@ async fn play(ctx: &Context, msg: &Message, mut args: Args) -> CommandResult {
 
             let raw_list = match get_raw_list {
                 Ok(list) => String::from_utf8(list.stdout).unwrap(),
-                Err(_) => String::from("Error!")
+                Err(_) => String::from("Error!"),
             };
 
             // Faster than serde somehow
-            let re = Regex::new(r#""url": "(https://www.youtube.com/watch\?v=[A-Za-z0-9]{11})""#).unwrap();
-            let urls: Vec<String> = re.captures_iter(&raw_list)
+            let re = Regex::new(r#""url": "(https://www.youtube.com/watch\?v=[A-Za-z0-9]{11})""#)
+                .unwrap();
+            let urls: Vec<String> = re
+                .captures_iter(&raw_list)
                 .map(|cap| cap[1].to_string())
                 .collect();
 
@@ -145,7 +145,7 @@ async fn play(ctx: &Context, msg: &Message, mut args: Args) -> CommandResult {
                                 .title(":notes: Added playlist!")
                                 .fields(vec![
                                     ("Songs queued", format!("{}", handler.queue().len()), true),
-                                    ("Total playtime", playtime, true)
+                                    ("Total playtime", playtime, true),
                                 ])
                                 .timestamp(Timestamp::now())
                         })
@@ -201,7 +201,6 @@ async fn play(ctx: &Context, msg: &Message, mut args: Args) -> CommandResult {
                 })
                 .await?;
         }
-
     } else {
         msg.channel_id
             .send_message(&ctx.http, |m| {

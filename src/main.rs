@@ -22,17 +22,18 @@ use songbird::SerenityInit;
 use crate::commands::choice::*;
 use crate::commands::help::*;
 use crate::commands::ping::*;
+use crate::commands::virustotal::*;
 
 use crate::commands::music::join::*;
 use crate::commands::music::leave::*;
 use crate::commands::music::nowplaying::*;
 use crate::commands::music::pause::*;
 use crate::commands::music::play::*;
+use crate::commands::music::queue::*;
 use crate::commands::music::resume::*;
 use crate::commands::music::shuffle::*;
 use crate::commands::music::skip::*;
 use crate::commands::music::stop::*;
-use crate::commands::music::queue::*;
 
 /* Shards container */
 pub struct ShardManagerContainer;
@@ -50,7 +51,8 @@ impl EventHandler for Handler {
             "Connected as --> {} [id: {}]",
             ready.user.name, ready.user.id
         );
-        let status = env::var("DISCORD_STATUS").expect("Set your DISCORD_STATUS environment variable!");
+        let status =
+            env::var("DISCORD_STATUS").expect("Set your DISCORD_STATUS environment variable!");
         ctx.set_activity(Activity::playing(status)).await;
     }
 
@@ -73,11 +75,11 @@ async fn before(_: &Context, msg: &Message, command_name: &str) -> bool {
 #[group]
 #[commands(
     // Misc
-    help,   ping,   choice,
+    help,   ping,   choice, scan,
 
     // Music commands
     join,   leave,  play,   pause,  resume,
-    skip,   stop,   queue,  shuffle, nowplaying
+    skip,   stop,   queue,  shuffle, nowplaying,
 
 )]
 struct General;

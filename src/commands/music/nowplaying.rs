@@ -84,5 +84,3 @@ async fn nowplaying(ctx: &Context, msg: &Message) -> CommandResult {
     }
     Ok(())
 }
-
-

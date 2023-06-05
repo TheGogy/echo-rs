@@ -1,8 +1,8 @@
+use crate::commands::utils::to_time;
 use serenity::framework::standard::macros::command;
 use serenity::framework::standard::CommandResult;
 use serenity::model::prelude::*;
 use serenity::prelude::*;
-use crate::commands::utils::to_time;
 
 #[command]
 #[only_in(guilds)]
@@ -43,7 +43,10 @@ async fn queue(ctx: &Context, msg: &Message) -> CommandResult {
                 "{}. {} - {}\n",
                 i + 1,
                 song.metadata().title.clone().unwrap(),
-                song.metadata().artist.clone().unwrap_or_else(|| String::from("Unknown"))
+                song.metadata()
+                    .artist
+                    .clone()
+                    .unwrap_or_else(|| String::from("Unknown"))
             ));
             total_time += song.metadata().duration.clone().unwrap().as_secs()
         }
@@ -75,5 +78,3 @@ async fn queue(ctx: &Context, msg: &Message) -> CommandResult {
     }
     Ok(())
 }
-
-
